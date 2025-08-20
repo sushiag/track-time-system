@@ -29,6 +29,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/checkout', [CheckinController::class, 'checkout'])->name('checkout');
 });
 
+// ================== EMPLOYEE ROUTES ==================
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [CheckinController::class, 'dashboard'])->name('dashboard');
+    Route::post('/checkin', [CheckinController::class, 'checkin'])->name('checkin');
+    Route::post('/checkout', [CheckinController::class, 'checkout'])->name('checkout');
+});
+
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

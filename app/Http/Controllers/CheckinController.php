@@ -2,30 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class CheckinController extends Controller
 {
+     public function dashboard()
+    {
+        $user = Auth::user();
+        $attendances = Attendance::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return Inertia::render('Dashboard', [
+            'user' => $user,
+            'attendances' => $attendances,
+        ]);
+    }
+
+
     public function checkin()
     {
         $user = Auth::user();
-        // Save the check-in time to the database (for now, just returning it)
-        return response()->json([
-            'message' => 'Checked in successfully!',
-            'user' => $user->name,
-            'time' => now()->toDateTimeString(),
+
+        Attendance::create([
+            'user_id' => $user->id,
+            'check_in' => now(),
         ]);
+
+        return back()->with('success', 'Checked in successfully!');
     }
 
     public function checkout()
     {
         $user = Auth::user();
-        // Save the check-out time to the database (for now, just returning it)
-        return response()->json([
-            'message' => 'Checked out successfully!',
-            'user' => $user->name,
-            'time' => now()->toDateTimeString(),
-        ]);
+
+        $attendance = Attendance::where('user_id', $user->id)
+            ->whereNull('check_out')
+            ->latest()
+            ->first();
+
+        if ($attendance) {
+            $attendance->update(['check_out' => now()]);
+        }
+
+        return back()->with('success', 'Checked out successfully!');
     }
 }

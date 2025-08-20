@@ -40,10 +40,10 @@ const handleCheckOut = async () => {
     try {
         await router.post('/checkout', {}, {
             onSuccess: () => {
-                message.value = '✅ You have successfully checked out!';
+                message.value = 'You have successfully checked out!';
             },
             onError: () => {
-                message.value = '❌ Something went wrong during check-out.';
+                message.value = 'Something went wrong during check-out.';
             },
             onFinish: () => {
                 loading.value = false;
@@ -61,17 +61,7 @@ const handleCheckOut = async () => {
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 overflow-x-auto">
-            <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-            </div>
+           
 
             <!-- Check-in / Check-out Section -->
             <div class="mt-6 flex gap-4">

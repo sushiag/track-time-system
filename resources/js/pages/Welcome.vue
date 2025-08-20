@@ -32,8 +32,7 @@ import { Head, Link } from '@inertiajs/vue3';
             
             <!-- Subtitle -->
             <p class="max-w-xl text-lg text-[#4b4b4b] dark:text-[#cfcfcf]">
-                Build for fast, secure and easy use for
-                <span class="font-semibold">Small Companies</span>
+                Build for fast, secure and easy use — Track your time now!
             </p>
 
             <!-- Buttons -->

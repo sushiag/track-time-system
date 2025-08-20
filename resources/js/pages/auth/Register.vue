@@ -21,24 +21,53 @@ import { LoaderCircle } from 'lucide-vue-next';
             class="flex flex-col gap-6"
         >
             <div class="grid gap-6">
+                <!-- Name Field -->
                 <div class="grid gap-2">
                     <Label for="name">Name</Label>
-                    <Input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" name="name" placeholder="Full name" />
+                    <Input 
+                        id="name" 
+                        type="text" 
+                        required 
+                        autofocus 
+                        :tabindex="1" 
+                        autocomplete="name" 
+                        name="name" 
+                        placeholder="Full name" 
+                    />
                     <InputError :message="errors.name" />
                 </div>
 
+                <!-- Email Field -->
                 <div class="grid gap-2">
                     <Label for="email">Email address</Label>
-                    <Input id="email" type="email" required :tabindex="2" autocomplete="email" name="email" placeholder="email@example.com" />
+                    <Input 
+                        id="email" 
+                        type="email" 
+                        required 
+                        :tabindex="2" 
+                        autocomplete="email" 
+                        name="email" 
+                        placeholder="email@example.com" 
+                    />
                     <InputError :message="errors.email" />
                 </div>
 
+                <!-- Password Field -->
                 <div class="grid gap-2">
                     <Label for="password">Password</Label>
-                    <Input id="password" type="password" required :tabindex="3" autocomplete="new-password" name="password" placeholder="Password" />
+                    <Input 
+                        id="password" 
+                        type="password" 
+                        required 
+                        :tabindex="3" 
+                        autocomplete="new-password" 
+                        name="password" 
+                        placeholder="Password" 
+                    />
                     <InputError :message="errors.password" />
                 </div>
 
+                <!-- Confirm Password Field -->
                 <div class="grid gap-2">
                     <Label for="password_confirmation">Confirm password</Label>
                     <Input
@@ -53,15 +82,29 @@ import { LoaderCircle } from 'lucide-vue-next';
                     <InputError :message="errors.password_confirmation" />
                 </div>
 
-                <Button type="submit" class="w-full mt-2" tabindex="5" :disabled="processing">
+                <!-- Submit Button -->
+                <Button 
+                    type="submit" 
+                    class="w-full mt-2" 
+                    tabindex="5" 
+                    :disabled="processing"
+                    variant="default"
+                >
                     <LoaderCircle v-if="processing" class="w-4 h-4 animate-spin" />
                     Create account
                 </Button>
             </div>
 
+            <!-- Already have an account -->
             <div class="text-sm text-center text-muted-foreground">
                 Already have an account?
-                <TextLink :href="route('login')" class="underline underline-offset-4" :tabindex="6">Log in</TextLink>
+                <TextLink 
+                    :href="route('login')" 
+                    class="underline underline-offset-4" 
+                    :tabindex="6"
+                >
+                    Log in
+                </TextLink>
             </div>
         </Form>
     </AuthBase>

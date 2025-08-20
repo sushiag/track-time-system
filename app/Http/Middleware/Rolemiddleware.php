@@ -18,3 +18,11 @@ class Rolemiddleware
         return $next($request);
     }
 }
+
+public function handle($request, Closure $next, $role) {
+    if (auth()->user()->role !== $role) {
+        abort(403, 'Unauthorized');
+    }
+    return $next($request);
+}
+

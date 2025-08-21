@@ -14,7 +14,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-    ];    public function checkins()
+        'role',
+    ];
+
+    public function checkins()
     {
         return $this->hasMany(Checkin::class);
     }
